@@ -5,7 +5,7 @@ const keys = (object) => Object.keys(object);
 const getOptions = (list, dictionary) => list.map(slug => ({
   slug,
   title: dictionary[slug]
-}))
+}));
 
 const getCitiesOption = (clubs) => {
   const citiesList = {};
@@ -19,7 +19,7 @@ const getCitiesOption = (clubs) => {
 const getActitvitiesList = (clubs) => {
   const activitiesList = {};
   clubs.forEach(({ activity }) => {
-    activity.forEach(({ slug, title }) => activitiesList[slug] = title)
+    activity.forEach(({ slug, title }) => activitiesList[slug] = title);
   });
   return activitiesList;
 }
@@ -30,7 +30,6 @@ const clubByCity = (clubs) => {
     const city = club.city.slug;
     clubList[city] ? clubList[city].push(club) : clubList[city] = [club];
   });
-
   return clubList;
 }
 
@@ -43,7 +42,7 @@ const groupedByCity = (clubs) => {
 
     const cityActivitiesSlugs = [];
     cityClubs.forEach(({ activity }) => {
-      activity.forEach(({ slug }) => cityActivitiesSlugs.push(slug))
+      activity.forEach(({ slug }) => cityActivitiesSlugs.push(slug));
     });
     const cityActivities = [
       { slug: 'all', title: 'Все' },
@@ -75,5 +74,5 @@ export const fetchClubs = () => http.get('/clubs')
   .then(({ data }) => ({
     citiesOption: getCitiesOption(data),
     groupedByCity: groupedByCity(data)
-  }))
+  }));
 

@@ -2,9 +2,6 @@ import React, { PureComponent } from 'react';
 
 import { fetchClubs } from './services/clubs';
 import ClubList from './components/ClubList/ClubList';
-import CitiesList from './components/CitiesList/CitiesList';
-import { setCities, setActivities } from './services/clubs';
-import ActivitiesList from './components/ActivitiesList/ActivitiesList';
 import ButtonSwitcher from './components/common/ButtonSwitcher';
 
 class App extends PureComponent {
@@ -56,7 +53,6 @@ class App extends PureComponent {
 
     const isLoaded = !loading && !error;
     const hasError = !loading && error;
-    console.log('hasError', error);
     const filteredClubs = isLoaded ? this.handleFilterClubs(groupedByCity[selectedCity].clubs, selectedActivity) : [];
     return (
       <div className="container">

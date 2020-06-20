@@ -1,0 +1,12 @@
+
+@import '~bootstrap/scss/mixins/hover';
+
+.category-btn {
+  @include hover-focus-active {
+    outline: none;
+  }
+
+  &.active {
+    color: black;
+  }
+}
