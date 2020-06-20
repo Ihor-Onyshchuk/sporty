@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 
+import './assets/scss/index.scss';
 import { fetchClubs } from './services/clubs';
 import ClubList from './components/ClubList/ClubList';
 import ButtonSwitcher from './components/common/ButtonSwitcher';
+import LoadingIndicator from './components/LoadingIndicator/LoadingIndicator';
 
 class App extends PureComponent {
   state = {
@@ -56,7 +58,7 @@ class App extends PureComponent {
     const filteredClubs = isLoaded ? this.handleFilterClubs(groupedByCity[selectedCity].clubs, selectedActivity) : [];
     return (
       <div className="container">
-        {loading && <div>Loading...</div>}
+        {loading && <LoadingIndicator />}
         {hasError && <div>An error happens please reload the page</div>}
         {isLoaded && (
           <>
