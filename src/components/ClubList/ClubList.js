@@ -3,14 +3,24 @@ import T from 'prop-types';
 
 const ClubList = ({ clubs }) => {
   return (
-    <div className="d-flex flex-wrap">
-      {clubs.map(({ title, logo, title_short }) => (
-        <div className="card" style={{ width: 18 + "rem" }} key={title}>
-          <img src={logo} className="card-img-top" alt={title_short} />
-          <div className="card-body">
-            <h5 className="card-title">{title}</h5>
-          </div>
-        </div >
+    <div class="row row-cols-1 row-cols-md-3">
+      {clubs.map(({ title, logo, title_short, link }) => (
+        <div class="col mb-4" key={title}>
+          <div className="card">
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="stretched-link text-decoration-none outline-none"
+            />
+            <img src={logo} className="card-img-top" alt={title_short} />
+            <div className="card-body">
+              <h5 className="card-title">
+                {title}
+              </h5>
+            </div>
+          </div >
+        </div>
       ))}
     </div>
   )
