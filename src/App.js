@@ -1,82 +1,82 @@
 import React, { PureComponent } from 'react';
 
-import { getClubs } from './api/index';
+import { fetchClubs } from './services/clubs';
 import ClubList from './components/ClubList/ClubList';
 import CitiesList from './components/CitiesList/CitiesList';
-import { setCities, setActivities } from './utils/formatData';
+import { setCities, setActivities } from './services/clubs';
 import ActivitiesList from './components/ActivitiesList/ActivitiesList';
-import ClubCard from './components/ClubCard/ClubCard';
+import ButtonSwitcher from './components/common/ButtonSwitcher';
 
 class App extends PureComponent {
   state = {
-    citiesList: {},
-    activitiesList: {},
+    citiesOption: [],
     groupedByCity: {},
     selectedCity: 'all',
-    selectedActivity: null
+    selectedActivity: 'all',
+    loading: true,
+    error: false
   };
 
   componentDidMount() {
-    getClubs().then(response => {
-      console.log('response', response);
-      const clubs = response.data;
+    this.getClubs();
+  }
 
-      const citiesList = {};
-      const activitiesList = {};
-      const clubByCity = {};
+  getClubs = () => {
+    fetchClubs()
+      .then(({ citiesOption, groupedByCity }) => {
+        this.setState({ citiesOption, groupedByCity, loading: false });
+      })
+      .catch(() => {
+        this.setState({ error: true, loading: false });
+      })
+  }
 
+  handleFilterClubs = (clubs, selectedActivity) => {
+    if (selectedActivity === 'all') return clubs;
+    return clubs.filter(({ activity }) => activity.some(({ slug }) => slug === selectedActivity));
+  }
 
-      clubs.forEach(({ city: { slug, title }, activity }) => {
-        citiesList[slug] = title;
-        activity.forEach(({ slug, title }) => activitiesList[slug] = title);
+  handleCityChange = (selectedCity) => {
+    this.setState({ selectedCity, selectedActivity: 'all' });
+  }
 
-      });
-
-      clubs.forEach(club => {
-        const city = club.city.slug;
-        clubByCity[city] ? clubByCity[city].push(club) : clubByCity[city] = [club];
-      });
-
-      const citySlugs = Object.keys(clubByCity);
-      const groupedByCity = citySlugs.reduce((memo, city) => {
-        const clubs = clubByCity[city];
-        const cityActivities = [];
-
-        clubs.forEach(({ activity }) => {
-          activity.forEach(({ slug }) => cityActivities.push(slug))
-        });
-
-        return ({
-          ...memo,
-          [city]: {
-            clubs,
-            activities: Array.from(new Set(cityActivities))
-          }
-        })
-      }, {})
-
-
-      console.log('all cities', citiesList);
-      console.log('all activities', activitiesList);
-      console.log('club by city', clubByCity);
-      console.log('group by city', groupedByCity);
-
-      this.setState({
-        citiesList, activitiesList, groupedByCity: {
-          all: { clubs, activities: Object.keys(activitiesList) },
-          ...groupedByCity,
-        }
-      });
-    })
-      .catch(err => console.log('error', err.message));
+  handleActivityChange = (selectedActivity) => {
+    this.setState({ selectedActivity });
   }
 
   render() {
+    const {
+      selectedCity,
+      selectedActivity,
+      groupedByCity,
+      citiesOption,
+      loading,
+      error
+    } = this.state;
+
+    const isLoaded = !loading && !error;
+    const hasError = !loading && error;
+    console.log('hasError', error);
+    const filteredClubs = isLoaded ? this.handleFilterClubs(groupedByCity[selectedCity].clubs, selectedActivity) : [];
     return (
       <div className="container">
-        <CitiesList />
-        <ActivitiesList />
-        <ClubList />
+        {loading && <div>Loading...</div>}
+        {hasError && <div>An error happens please reload the page</div>}
+        {isLoaded && (
+          <>
+            <ButtonSwitcher
+              onChange={this.handleCityChange}
+              active={selectedCity}
+              options={citiesOption}
+            />
+            <ButtonSwitcher
+              onChange={this.handleActivityChange}
+              active={selectedActivity}
+              options={groupedByCity[selectedCity].activities}
+            />
+            <ClubList clubs={filteredClubs} />
+          </>
+        )}
       </div >
     );
   }
