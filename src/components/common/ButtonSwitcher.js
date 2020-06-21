@@ -2,10 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import T from 'prop-types';
 
-import './ButtonSwitcher.scss';
+import '../../assets/scss/ButtonSwitcher.scss';
 
 const ButtonSwitcher = ({ options, active, onChange }) => (
-  <div className="btn-group d-flex flex-wrap mt-2 mb-3" role="group">
+  <div className="btn-group d-flex flex-wrap my-3" role="group">
     {options.map(option => {
       const isActive = active === option.slug;
       return (

@@ -1,0 +1,16 @@
+
+.card {
+  width: 346px;
+  height: 422px;
+  transition: transform linear 0.15s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  .card-logo {
+    width: 342px;
+    height: 342px;
+    background-color: rgb(173, 181, 190);
+  }
+}

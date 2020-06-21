@@ -70,11 +70,13 @@ class App extends PureComponent {
               active={selectedCity}
               options={citiesOption}
             />
+            <hr />
             <ButtonSwitcher
               onChange={this.handleActivityChange}
               active={selectedActivity}
               options={groupedByCity[selectedCity].activities}
             />
+            <hr />
             <ClubList clubs={filteredClubs} />
           </>
         )}
