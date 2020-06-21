@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/sporty/static/css/main.e99d8422.chunk.css",
+    "main.js": "/sporty/static/js/main.a09a0e32.chunk.js",
+    "main.js.map": "/sporty/static/js/main.a09a0e32.chunk.js.map",
+    "runtime-main.js": "/sporty/static/js/runtime-main.3b43c592.js",
+    "runtime-main.js.map": "/sporty/static/js/runtime-main.3b43c592.js.map",
+    "static/js/2.e43ae797.chunk.js": "/sporty/static/js/2.e43ae797.chunk.js",
+    "static/js/2.e43ae797.chunk.js.map": "/sporty/static/js/2.e43ae797.chunk.js.map",
+    "index.html": "/sporty/index.html",
+    "precache-manifest.266cd03fd2e086f204ea291019722639.js": "/sporty/precache-manifest.266cd03fd2e086f204ea291019722639.js",
+    "service-worker.js": "/sporty/service-worker.js",
+    "static/css/main.e99d8422.chunk.css.map": "/sporty/static/css/main.e99d8422.chunk.css.map",
+    "static/js/2.e43ae797.chunk.js.LICENSE.txt": "/sporty/static/js/2.e43ae797.chunk.js.LICENSE.txt",
+    "static/media/load-indicator.gif": "/sporty/static/media/load-indicator.bd85ac8c.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3b43c592.js",
+    "static/js/2.e43ae797.chunk.js",
+    "static/css/main.e99d8422.chunk.css",
+    "static/js/main.a09a0e32.chunk.js"
+  ]
+}
