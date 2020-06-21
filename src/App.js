@@ -59,7 +59,10 @@ class App extends PureComponent {
     return (
       <div className="container">
         {loading && <LoadingIndicator />}
-        {hasError && <div>An error happens please reload the page</div>}
+        {hasError && (
+          <div className='text-center alert alert-danger mt-3' role="alert">
+            Something occurred wrong, please reload the page
+          </div>)}
         {isLoaded && (
           <>
             <ButtonSwitcher

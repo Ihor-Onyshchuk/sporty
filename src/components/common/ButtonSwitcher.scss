@@ -1,17 +1,6 @@
 @import '../../assets/scss/variables';
 @import '~bootstrap/scss/mixins/hover';
 
-// .category-btn {
-//   @include hover-focus-active {
-//     outline: none;
-//   }
-
-//   &.active {
-//     color: black;
-//   }
-// }
-
-// Category btn
 %category-shared {
   margin-top: 0.625rem;
   font-weight: 500;
@@ -28,6 +17,11 @@
   @include hover-focus-active {
     color: $gray-900;
     background: $gray-100;
+    outline: none;
+  }
+
+  &.active {
+    color: black;
   }
 
   &:not(:nth-last-child(1)) {

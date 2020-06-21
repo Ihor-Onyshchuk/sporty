@@ -5,7 +5,7 @@ import loadingIndicator from '../../assets/load-indicator.gif';
 
 const LoadingIndicator = () => (
   <div className="d-inline-block load-indicator">
-    <img className="load-img" src={loadingIndicator} alt="loader" />
+    <img className="load-img" src={loadingIndicator} />
     <div className="load-bg"></div>
   </div>
 );
