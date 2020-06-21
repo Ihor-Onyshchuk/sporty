@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 import Promo from './components/Promo/Promo';
 import ClubList from './components/ClubList/ClubList';
-import ButtonSwitcher from './components/common/ButtonSwitcher';
+import ButtonSwitcher from './components/common/ButtonSwitcher/ButtonSwitcher';
 import LoadingIndicator from './components/LoadingIndicator/LoadingIndicator';
 
 import { fetchClubs } from './services/clubs';

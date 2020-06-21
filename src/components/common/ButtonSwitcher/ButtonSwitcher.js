@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import T from 'prop-types';
 
-import '../../assets/scss/ButtonSwitcher.scss';
+import './ButtonSwitcher.scss';
 
 const ButtonSwitcher = ({ options, active, onChange, className }) => (
   <div className="btn-group d-flex flex-wrap my-3" role="group">

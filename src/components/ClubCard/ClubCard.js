@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 
-import '../../assets/scss/ClubCard.scss';
+import './ClubCard.scss';
 
 const ClubCard = ({ club: { title, logo, title_short, link } }) => (
   <div className="card shadow club-card">
