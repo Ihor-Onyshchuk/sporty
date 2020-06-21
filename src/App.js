@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 
-import './assets/scss/index.scss';
 import Promo from './components/Promo/Promo';
-import { fetchClubs } from './services/clubs';
 import ClubList from './components/ClubList/ClubList';
 import ButtonSwitcher from './components/common/ButtonSwitcher';
 import LoadingIndicator from './components/LoadingIndicator/LoadingIndicator';
+
+import { fetchClubs } from './services/clubs';
+
+import './assets/scss/index.scss';
 
 class App extends PureComponent {
   state = {
