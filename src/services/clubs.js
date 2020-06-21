@@ -1,17 +1,18 @@
 import { http } from '../api';
 
 const keys = (object) => Object.keys(object);
+const allOption = { slug: 'all', title: 'Все' };
 
 const getOptions = (list, dictionary) => list.map(slug => ({
   slug,
   title: dictionary[slug]
 }));
 
-const getCitiesOption = (clubs) => {
+const getCitiesOptions = (clubs) => {
   const citiesList = {};
   clubs.forEach(({ city: { slug, title } }) => citiesList[slug] = title);
   return [
-    { slug: 'all', title: 'Все' },
+    allOption,
     ...getOptions(keys(citiesList), citiesList)
   ]
 }
@@ -45,7 +46,7 @@ const groupedByCity = (clubs) => {
       activity.forEach(({ slug }) => cityActivitiesSlugs.push(slug));
     });
     const cityActivities = [
-      { slug: 'all', title: 'Все' },
+      allOption,
       ...getOptions(Array.from(new Set(cityActivitiesSlugs)), activitiesList)
     ]
 
@@ -62,7 +63,7 @@ const groupedByCity = (clubs) => {
     all: {
       clubs,
       activities: [
-        { slug: 'all', title: 'Все' },
+        allOption,
         ...getOptions(keys(activitiesList), activitiesList)
       ]
     },
@@ -72,7 +73,7 @@ const groupedByCity = (clubs) => {
 
 export const fetchClubs = () => http.get('/clubs')
   .then(({ data }) => ({
-    citiesOption: getCitiesOption(data),
+    citiesOptions: getCitiesOptions(data),
     groupedByCity: groupedByCity(data)
   }));
 

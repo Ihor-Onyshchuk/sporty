@@ -23,10 +23,12 @@ const ClubCard = ({ club: { title, logo, title_short, link } }) => (
 )
 
 ClubCard.propTypes = {
-  logo: T.string,
-  link: T.string,
-  title: T.string,
-  title_short: T.string,
-};
+  club: T.shape({
+    title: T.string,
+    logo: T.string,
+    title_short: T.string,
+    link: T.string
+  }).isRequired
+}
 
 export default ClubCard;

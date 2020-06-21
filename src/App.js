@@ -11,7 +11,7 @@ import './assets/scss/index.scss';
 
 class App extends PureComponent {
   state = {
-    citiesOption: [],
+    citiesOptions: [],
     groupedByCity: {},
     selectedCity: 'all',
     selectedActivity: 'all',
@@ -25,11 +25,18 @@ class App extends PureComponent {
 
   getClubs = () => {
     fetchClubs()
-      .then(({ citiesOption, groupedByCity }) => {
-        this.setState({ citiesOption, groupedByCity, loading: false });
+      .then(({ citiesOptions, groupedByCity }) => {
+        this.setState({
+          citiesOptions,
+          groupedByCity,
+          loading: false
+        });
       })
       .catch(() => {
-        this.setState({ error: true, loading: false });
+        this.setState({
+          error: true,
+          loading: false
+        });
       })
   }
 
@@ -39,7 +46,10 @@ class App extends PureComponent {
   }
 
   handleCityChange = (selectedCity) => {
-    this.setState({ selectedCity, selectedActivity: 'all' });
+    this.setState({
+      selectedCity,
+      selectedActivity: 'all'
+    });
   }
 
   handleActivityChange = (selectedActivity) => {
@@ -51,7 +61,7 @@ class App extends PureComponent {
       selectedCity,
       selectedActivity,
       groupedByCity,
-      citiesOption,
+      citiesOptions,
       loading,
       error
     } = this.state;
@@ -59,6 +69,7 @@ class App extends PureComponent {
     const isLoaded = !loading && !error;
     const hasError = !loading && error;
     const filteredClubs = isLoaded ? this.handleFilterClubs(groupedByCity[selectedCity].clubs, selectedActivity) : [];
+
     return (
       <div className="container">
         {loading && <LoadingIndicator />}
@@ -72,7 +83,7 @@ class App extends PureComponent {
             <ButtonSwitcher
               onChange={this.handleCityChange}
               active={selectedCity}
-              options={citiesOption}
+              options={citiesOptions}
               className="border-primary"
             />
             <hr />
