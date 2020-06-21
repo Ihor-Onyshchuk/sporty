@@ -4,14 +4,14 @@ import T from 'prop-types';
 
 import '../../assets/scss/ButtonSwitcher.scss';
 
-const ButtonSwitcher = ({ options, active, onChange }) => (
+const ButtonSwitcher = ({ options, active, onChange, className }) => (
   <div className="btn-group d-flex flex-wrap my-3" role="group">
     {options.map(option => {
       const isActive = active === option.slug;
       return (
         <button
           key={option.slug}
-          className={cx('btn-sm category-btn m-1', { active: isActive })}
+          className={cx('btn-sm category-btn m-1', className, { active: isActive })}
           type="button"
           onClick={() => (isActive ? null : onChange(option.slug))}
         >
@@ -20,7 +20,7 @@ const ButtonSwitcher = ({ options, active, onChange }) => (
       );
     })}
   </div>
-);
+)
 
 ButtonSwitcher.propTypes = {
   options: T.arrayOf(T.shape({

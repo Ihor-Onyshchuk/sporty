@@ -1,16 +1,23 @@
 
 .card {
-  width: 346px;
-  height: 422px;
+  width: 100%;
+  max-width: 346px;
+  min-height: 422px;
+  margin: 0 auto;
   transition: transform linear 0.15s;
 
   &:hover {
     transform: scale(1.03);
   }
 
-  .card-logo {
-    width: 342px;
+  .logo-wrapper {
     height: 342px;
-    background-color: rgb(173, 181, 190);
+    background-color: lightsteelblue;
+
+    .card-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
