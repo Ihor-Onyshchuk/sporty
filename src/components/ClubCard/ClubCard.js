@@ -4,7 +4,7 @@ import T from 'prop-types';
 import '../../assets/scss/ClubCard.scss';
 
 const ClubCard = ({ club: { title, logo, title_short, link } }) => (
-  <div className="card shadow">
+  <div className="card shadow club-card">
     <a
       href={link}
       target="_blank"
