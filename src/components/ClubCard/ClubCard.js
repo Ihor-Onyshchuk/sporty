@@ -3,9 +3,10 @@ import T from 'prop-types';
 
 import './ClubCard.scss';
 
-const ClubCard = ({ club: { title, logo, title_short, link } }) => (
-  <div className="card shadow club-card">
+const ClubCard = ({ club: { title, logo, title_short, link }, style }) => (
+  <div className="card shadow club-card " style={style}>
     <a
+      title={title}
       href={link}
       target="_blank"
       rel="noopener noreferrer nofollow"
@@ -15,7 +16,7 @@ const ClubCard = ({ club: { title, logo, title_short, link } }) => (
       <img src={logo} className="card-img-top card-logo" alt={title_short} />
     </div>
     <div className="card-body text-center">
-      <p className="card-title">
+      <p className="card-title text-truncate">
         {title}
       </p>
     </div>
