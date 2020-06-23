@@ -95,6 +95,7 @@ class App extends PureComponent {
             />
             <hr />
             <ClubList clubs={filteredClubs} />
+            <hr />
           </>
         )}
       </div >
