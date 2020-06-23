@@ -11,7 +11,7 @@ const ButtonSwitcher = ({ options, active, onChange, className }) => (
       return (
         <button
           key={option.slug}
-          className={cx('btn-sm category-btn m-1', className, { active: isActive })}
+          className={cx('btn-sm category-btn shadow m-1', className, { active: isActive })}
           type="button"
           onClick={() => (isActive ? null : onChange(option.slug))}
         >

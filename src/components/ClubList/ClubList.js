@@ -19,4 +19,3 @@ ClubList.propTypes = {
 };
 
 export default ClubList;
-
