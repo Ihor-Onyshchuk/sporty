@@ -76,4 +76,3 @@ export const fetchClubs = () => http.get('/clubs')
     citiesOptions: getCitiesOptions(data),
     groupedByCity: groupedByCity(data)
   }));
-

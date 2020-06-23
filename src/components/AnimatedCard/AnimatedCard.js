@@ -20,4 +20,4 @@ AnimatedCard.propTypes = {
   index: T.number
 }
 
-export default AnimatedCard
+export default AnimatedCard;
