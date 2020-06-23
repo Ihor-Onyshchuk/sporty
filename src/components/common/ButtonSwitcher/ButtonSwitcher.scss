@@ -25,6 +25,7 @@
   &.active {
     color: black;
     border-color: #ffa43b !important;
+    box-shadow: none !important;
   }
 
   &:not(:nth-last-child(1)) {

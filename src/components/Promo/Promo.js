@@ -1,10 +1,7 @@
 import React from 'react';
 
 const Promo = () => (
-  <div className="card bg-light mb-5">
-    <div className="card-header">
-      <h1>Запись на тренировки онлайн</h1>
-    </div>
+  <div className="card card-border-radius bg-white mb-3 shadow">
     <div className="card-body">
       <h5 className="card-title">На нашем сайте вы сможете:</h5>
       <ul className="card-text ml-4">

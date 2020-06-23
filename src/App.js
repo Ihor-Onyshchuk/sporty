@@ -8,6 +8,7 @@ import LoadingIndicator from './components/LoadingIndicator/LoadingIndicator';
 import { fetchClubs } from './services/clubs';
 
 import './assets/scss/index.scss';
+import Header from './components/Header/Header';
 
 class App extends PureComponent {
   state = {
@@ -71,31 +72,35 @@ class App extends PureComponent {
     const filteredClubs = isLoaded ? this.handleFilterClubs(groupedByCity[selectedCity].clubs, selectedActivity) : [];
 
     return (
-      <div className="container">
+      <div>
         {loading && <LoadingIndicator />}
         {hasError && (
-          <div className='text-center alert alert-danger mt-3' role="alert">
+          <div className='container text-center alert alert-danger mt-3' role="alert">
             Something occurred wrong, please reload the page
           </div>)}
         {isLoaded && (
           <>
-            <Promo />
-            <ButtonSwitcher
-              onChange={this.handleCityChange}
-              active={selectedCity}
-              options={citiesOptions}
-              className="border-primary"
-            />
+            <Header />
+            <div className="container">
+              <Promo />
+              <ButtonSwitcher
+                onChange={this.handleCityChange}
+                active={selectedCity}
+                options={citiesOptions}
+                className="border-primary"
+              />
+              <hr />
+              <ButtonSwitcher
+                onChange={this.handleActivityChange}
+                active={selectedActivity}
+                options={groupedByCity[selectedCity].activities}
+                className="border-success"
+              />
+              <hr />
+              <ClubList clubs={filteredClubs} />
+            </div>
             <hr />
-            <ButtonSwitcher
-              onChange={this.handleActivityChange}
-              active={selectedActivity}
-              options={groupedByCity[selectedCity].activities}
-              className="border-success"
-            />
-            <hr />
-            <ClubList clubs={filteredClubs} />
-            <hr />
+            <p className="text-center">&copy; 2020 Sporty</p>
           </>
         )}
       </div >

@@ -10,6 +10,9 @@ $blue: #8ea7ff;
 // Spacing
 $spacer: 1.25rem;
 
+// Comon
+$border-radius:  10px;
+
 // Buttons
 $input-btn-padding-y: 0.625rem;
 $input-btn-padding-x: 1rem;
@@ -21,3 +24,6 @@ $input-btn-font-size-sm: 0.75rem;
 $input-btn-line-height-sm: 1;
 
 $btn-border-radius-sm: 6px;
+
+// Cards
+$card-border-radius: $border-radius;
